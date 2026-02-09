@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 0 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 0 100% 55%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Styles */
+.red-glow {
+  box-shadow: 0 0 15px rgba(255, 26, 26, 0.1);
+}
+
+.kpi-glow {
+  box-shadow: 0 0 20px rgba(255, 26, 26, 0.15), inset 0 0 10px rgba(255, 26, 26, 0.05);
+  border-color: rgba(255, 26, 26, 0.3);
+}
+
+.icon-red-glow {
+  filter: drop-shadow(0 0 3px rgba(255, 26, 26, 0.8));
+}
+
+.red-gradient-text {
+  background: linear-gradient(to right, #ff1a1a, #ff4d4d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ff1a1a;
+}
+
+.premium-texture {
+  background-image: radial-gradient(circle at 50% 0%, rgba(255, 26, 26, 0.08) 0%, transparent 70%), 
+                    linear-gradient(to bottom right, rgba(255, 26, 26, 0.02) 0%, transparent 50%);
+}
+
+.page-view {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* TAB Component Styles */
+.tab-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tab-button:hover::before {
+  opacity: 1;
+}
+
+.tab-button.active {
+  background: #ff1a1a;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 26, 26, 0.3);
+}
+
+.tab-button:not(.active) {
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+}
+
+.tab-content {
+  animation: tabFadeIn 0.4s ease-in-out;
+}
+
+@keyframes tabFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+.copy-button {
+  cursor: pointer;
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+}
+
+/* Round Card Styles */
+.cycle-card {
+  transition: all 0.3s ease;
+}
+
+.cycle-card:not(.active):hover {
+  transform: translateX(4px);
+}
+
+.cycle-card.active {
+  border-width: 2px !important;
+  border-color: #ff1a1a !important;
+  box-shadow: 0 0 20px rgba(255, 26, 26, 0.4);
+}
+
+/* Auto Scroll Styles */
+.auto-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Validation Styles */
+.input-valid {
+  border-color: #10b981 !important;
+}
+
+.input-invalid {
+  border-color: #ef4444 !important;
+}
+
+.feedback-success {
+  color: #10b981;
+}
+
+.feedback-error {
+  color: #ef4444;
+}
+
+/* Step Styles */
+.step-active .step-indicator {
+  @apply bg-primary text-white ring-4 ring-primary/20;
+}
+
+.step-inactive .step-indicator {
+  @apply bg-card border border-border text-muted-foreground;
+}
+
+/* Material Icons Style */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
